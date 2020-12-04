@@ -6,6 +6,9 @@
 import random
 
 a1 = [random.randint(1,1000) for i in range(30)]
-a2 = a1[1::2]
+a2 = []
+for k, v in enumerate(a1):
+    if v % 2 == 0:
+        a2.append(k)
 print(a1)
 print(a2)
