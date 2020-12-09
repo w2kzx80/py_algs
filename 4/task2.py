@@ -1,4 +1,5 @@
 
+import cProfile
 
 def method1(n):
     sieve = [1]
@@ -63,3 +64,27 @@ def method2(n):
 # При этом между некоторыми числами разница будет очеь маленькой. И эта закономерность математиками пока не выведена
 # Однако на небольшом промежутке до 100 первый алгоритм показывает зависимость скорости выполнения, похожую на O(n^2)
 # Второй алгоритм, кстати, тоже - но с каким-то коэффициентом ( 1.5 * n^2 ? ), а коэффициенты при вычислении сложности алгоритма не учитываются
+
+
+# cProfile.run('method1(50)')
+# 53 function calls in 0.001 seconds
+#
+#    Ordered by: standard name
+#
+#   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+#        1    0.000    0.000    0.001    0.001 <string>:1(<module>)
+#        1    0.001    0.001    0.001    0.001 task2.py:4(method1)
+#        1    0.000    0.000    0.001    0.001 {built-in method builtins.exec}
+#       49    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
+#        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+
+# cProfile.run('method2(50)')
+# 4 function calls in 0.001 seconds
+#
+#    Ordered by: standard name
+#
+#    ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+#         1    0.000    0.000    0.001    0.001 <string>:1(<module>)
+#         1    0.001    0.001    0.001    0.001 task2.py:22(method2)
+#         1    0.000    0.000    0.001    0.001 {built-in method builtins.exec}
+#         1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
