@@ -55,11 +55,7 @@ for k, v in enumerate(c1[::-1]):
 for k, v in enumerate(c2[::-1]):
     h2[k] = ha[v]
 
-print(h1)
-print(h2)
-
 # Сложение
-hsum = collections.OrderedDict()
 hsum = h1.copy()
 for k, v in h2.items():
     if not k in hsum:
@@ -73,3 +69,21 @@ for k, v in h2.items():
 
 print("Sum = ",end="")
 print([hai[v] for k,v in hsum.items()][::-1])
+
+# Произведение
+hpr = collections.OrderedDict()
+for k, v in h2.items():
+    if not k in hpr:
+        hpr[k] = 0
+    for k1, v1 in h1.items():
+        if not (k+k1) in hpr:
+            hpr[k+k1] = 0
+        hpr[k+k1] += v*v1
+        if hpr[k+k1]>15:
+            if not (k+k1+1) in hpr:
+                hpr[k+k1+1] = 0
+            hpr[k+k1+1] += hpr[k+k1] // 16
+            hpr[k+k1] = hpr[k+k1] % 16
+
+print("Сomp = ",end="")
+print([hai[v] for k,v in hpr.items()][::-1])
