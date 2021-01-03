@@ -7,7 +7,7 @@ import random
 def generate_graph(n):
     graph=[]
     for i in range(n):
-        ga = [int(i) for i in input(f"Cвязи вершины {i} через пробел:").split()]
+        ga = sorted([int(i) for i in input(f"Cвязи вершины {i} через пробел:").split()])
         graph.append(ga)
     return graph
 
